@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharatiya Ballot</title>
+    <style>
+        #myDropdown {
+        width: 200px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        }
+        #myDropdown option:checked {
+        background-color: #f0f0f0;
+        color: #333; 
+        font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <select id="firstDropdown">
+        <option value="">Select Your District</option>
+        <option value="fruit">Fruit</option>
+        <option value="vegetable">Vegetable</option>
+      </select>   
+      <select id="secondDropdown"></select>
+      <script>
+            const options = {
+            fruit: ['Apple', 'Banana', 'Orange'],
+            vegetable: ['Carrot', 'Potato', 'Tomato']
+            };
+
+            function populateSecondDropdown() {
+            const firstDropdown = document.getElementById('firstDropdown');
+            const secondDropdown = document.getElementById('secondDropdown');
+            const selectedValue = firstDropdown.value;
+             secondDropdown.innerHTML = '';
+                options[selectedValue].forEach(option => {
+                const optionElement = document.createElement('option');
+                optionElement.textContent = option;
+                secondDropdown.appendChild(optionElement);
+            });
+            }
+        document.getElementById('firstDropdown').addEventListener('change', populateSecondDropdown);
+        populateSecondDropdown();
+
+      </script>
+</body>
+</html>
